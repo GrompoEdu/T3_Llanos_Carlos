@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using UsandoCRUDValidaciones.Datos;
+using T3_Llanos_Carlos.Datos;
 
 var builder = WebApplication.CreateBuilder(args);
 

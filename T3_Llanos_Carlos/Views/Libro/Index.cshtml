@@ -1,79 +1,68 @@
 ﻿@model IEnumerable<T3_Llanos_Carlos.Models.Libro>
-
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<div class="container pt-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary"> Lista de Categorías</h2>
+        </div>
+        <div class="col-6">
+            <a asp-controller="Libro" asp-action="Crear" class="btn btn-primary">Nuevo Libro</a>
+        </div>
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Titulo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Autor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tema)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Editorial)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnioPublicacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Paginas)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Categoria)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Copias)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Titulo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Autor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tema)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Editorial)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AnioPublicacion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Paginas)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Categoria)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Copias)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Tema</th>
+                    <th>Editorial</th>
+                    <th>Año de Publicacion</th>
+                    <th>Paginas</th>
+                    <th>Categoria</th>
+                    <th>Material</th>
+                    <th>Copias</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th width="40%"> @item.Titulo</th>
+                        <th width="30%">@item.Autor</th>
+                        <th width="20%">@item.Tema</th>
+                        <th width="20%">@item.Editorial</th>
+                        <th width="20%">@item.AnioPublicacion</th>
+                        <th width="20%">@item.Paginas</th>
+                        <th width="20%">@item.Categoria</th>
+                        <th width="20%">@item.Material</th>
+                        <th width="20%">@item.Copias</th>
+                        <th>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Libro" asp-action="Editar" asp-route-Id="@item.Id" class="btn btn-primary mx-2">Editar</a>
+                                <a asp-controller="Libro" asp-action="Eliminar" asp-route-Id="@item.Id" class="btn btn-danger mx-2">Eliminar</a>
+                            </div>
+                        </th>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No hay registros</p>
+    }
+</div>
+

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using T3_Llanos_Carlos.Models;
 
-namespace UsandoCRUDValidaciones.Datos
+namespace T3_Llanos_Carlos.Datos
 {
     public class ApplicationDbContext:DbContext
     {
