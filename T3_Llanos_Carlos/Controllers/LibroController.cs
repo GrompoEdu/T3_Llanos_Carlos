@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using T3_Llanos_Carlos.Models;
 using T3_Llanos_Carlos.Datos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace T3_Llanos_Carlos.Controllers
 {
+    [Authorize]
     public class LibroController : Controller
     {
+        
         private readonly ApplicationDbContext _db;
 
         public LibroController(ApplicationDbContext db)
